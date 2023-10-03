@@ -10,5 +10,16 @@ export const styles = StyleSheet.create({
     paddingBottom: 60,
     backgroundColor: '#0D0D0D',
   },
-	
+  tasks: {
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  tasksCounter: {
+    fontSize: 15,
+    color: '#FFF',
+  },
+  tasksCounterBold: {
+    fontSize: 15,
+    color: '#FFF',
+  }
 });
