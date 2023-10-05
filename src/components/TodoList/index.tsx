@@ -6,23 +6,23 @@ export function TodoList() {
 	
 	return(
 		<View style={styles.container}>
-				<View style={styles.wrapperCounter}>
-					<Text style={styles.counterTextTodo}>
-						Created  
-						{
-							<View style={styles.counterBagde}>
-								<Text style={styles.counterNumber}>5</Text>
-							</View>
-						}
-					</Text>
-					<Text style={styles.counterTextDone}>
-						Completed  
-						{
-							<View style={styles.counterBagde}>
-								<Text style={styles.counterNumber}>2</Text>
-							</View>
-						}
-					</Text>
+				<View style={styles.wrapperCounters}>
+					<View style={styles.wrapperCounter}>
+						<Text style={styles.counterTextTodo}>
+							Created  
+						</Text>
+						<View style={styles.counterBagde}>
+							<Text style={styles.counterNumber}>5</Text>
+						</View>
+					</View>
+					<View style={styles.wrapperCounter}>
+						<Text style={styles.counterTextDone}>
+							Completed  
+						</Text>
+						<View style={styles.counterBagde}>
+							<Text style={styles.counterNumber}>2</Text>
+						</View>
+					</View>
 				</View>
 				{/*<View style={styles.divider}></View>*/}
 			<View style={styles.wrapperCard}>

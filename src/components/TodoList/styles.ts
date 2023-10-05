@@ -6,11 +6,17 @@ export const styles = StyleSheet.create({
 		marginHorizontal: 24,
 
 	},
-	wrapperCounter: {
+	wrapperCounters: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		marginBottom: 21
+	},
+	wrapperCounter: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: 8
 	},
 
 	counterTextTodo: {
