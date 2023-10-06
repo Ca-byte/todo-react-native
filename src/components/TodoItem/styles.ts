@@ -6,9 +6,11 @@ export const styles = StyleSheet.create({
 		height: 64,
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'space-between',
 		backgroundColor: '#262626',
 		borderRadius: 8,
+		marginBottom: 8,
+		paddingHorizontal: 24
 	},
 	
 	trashButton: {

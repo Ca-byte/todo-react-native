@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
 	},
 
   divider: {
-    width: '80%', 
+    width: '100%', 
     borderBottomWidth: 1,
     borderColor: '#ccc', 
     marginVertical: 10, 
@@ -99,5 +99,16 @@ export const styles = StyleSheet.create({
 	
 	taskName: {
 		color : '#F2F2F2'
+	},
+	EmptyListContent: {
+		alignSelf: 'center',
+		marginTop: 48,
+		marginBottom: 16
+		
+	},
+	listEmptyText: {
+		color:  '#F2F2F2',
+		fontSize: 14,
+		textAlign: 'center'
 	}
 })
