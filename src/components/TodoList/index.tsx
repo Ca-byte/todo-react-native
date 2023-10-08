@@ -8,21 +8,24 @@ import { TodoItem } from "../TodoItem";
 
 
 export function TodoList() {
-	const [task, setTask] = useState('');
-	{/*const [ newTask, setNewTask] = useState<string[]>([])*/}
-	const todos = ['Learn react native', 'Learn how to repass props', 'Learn', 'Please learn it', 'everyday', 'you are going to succeed', 'Practing a little','never give up', 'It will pays off', 'we are almost there', 'booom', 'bang']
-
+	const [taskName, setTaskName] = useState('');
+	const [todos, setTodos] = useState<string[]>([]);
+	
 	function handleAddNewTask() {
-		if (todos.includes('everyday')){
+		if (todos.includes(taskName)){
 			return Alert.alert("Oops! It seems like you've already added this task to your list.")
 		}
+		setTodos(prevState => [...prevState, taskName])
+		setTaskName('')
   }
 
 	function handleRemoveTodo(activity: string){
+	
+
 		Alert.alert('Delete',`Are you sure to delete ${activity}?`, [
 			{
 				text: 'Yes',
-				onPress: () => Alert.alert('Deleted!')
+				onPress: () => setTodos(prevState => prevState.filter(todo => todo !== activity))
 			},
 			{
 				text: 'No',
@@ -40,8 +43,8 @@ export function TodoList() {
 					placeholderTextColor="#808080"
 					selectionColor="#1E6F9F"
 					returnKeyType="send"
-					value={task}
-					onChangeText={setTask}
+					value={taskName}
+					onChangeText={setTaskName}
 					onSubmitEditing={handleAddNewTask}
 				/>
 				<TouchableOpacity
