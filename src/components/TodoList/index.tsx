@@ -1,4 +1,4 @@
-import { FlatList, Image, Text, TextInput, TouchableOpacity, View} from "react-native";
+import { Alert, FlatList, Image, Text, TextInput, TouchableOpacity, View} from "react-native";
 import { useState } from "react";
 import { styles } from "./styles";
 
@@ -10,15 +10,25 @@ import { TodoItem } from "../TodoItem";
 export function TodoList() {
 	const [task, setTask] = useState('');
 	{/*const [ newTask, setNewTask] = useState<string[]>([])*/}
-	const todos = ['Learn react native', 'Learn how to repass props', 'Learn', 'Please learn it', 'everyday', 'you are going to succeed', 'Practing a little','never give up', 'It will pays off', 'we are almost there', 'booom']
+	const todos = ['Learn react native', 'Learn how to repass props', 'Learn', 'Please learn it', 'everyday', 'you are going to succeed', 'Practing a little','never give up', 'It will pays off', 'we are almost there', 'booom', 'bang']
 
 	function handleAddNewTask() {
-		if (!task)
-    setTask('');
+		if (todos.includes('everyday')){
+			return Alert.alert("Oops! It seems like you've already added this task to your list.")
+		}
   }
 
 	function handleRemoveTodo(activity: string){
-		console.log(`Are you sure to delete ${activity}!`)
+		Alert.alert('Delete',`Are you sure to delete ${activity}?`, [
+			{
+				text: 'Yes',
+				onPress: () => Alert.alert('Deleted!')
+			},
+			{
+				text: 'No',
+				style: 'cancel'
+			}
+		] )
 	}
 
 	return(
