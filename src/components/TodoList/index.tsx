@@ -62,7 +62,7 @@ export function TodoList() {
 								Created  
 							</Text>
 							<View style={styles.counterBagde}>
-								<Text style={styles.counterNumber}>5</Text>
+								<Text style={styles.counterNumber}>{todos.length}</Text>
 							</View>
 						</View>
 						<View style={styles.wrapperCounter}>
