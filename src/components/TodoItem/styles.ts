@@ -19,5 +19,31 @@ export const styles = StyleSheet.create({
 	
 	taskName: {
 		color : '#F2F2F2'
-	}
+	},
+  checkbox: {
+    width: 30,
+    height: 30,
+    borderWidth: 2,
+    borderColor: '#5E60CE',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkmarkIcon: {
+    width: 20,
+    height: 20,
+  },
+  checkmarkEmpty: {
+    width: 20,
+    height: 20,
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: '#5E60CE',
+  },
+  completedTaskName: {
+    textDecorationLine: 'line-through',
+    color: 'gray',
+   
+  },
+
 })
