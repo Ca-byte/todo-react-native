@@ -82,6 +82,8 @@ export function TodoList() {
 							key={item}
 							todo={item} 
 							onRemove={() =>handleRemoveTodo(item)}
+							onToggleComplete={}
+							isCompleted
 							/>
 							)}
 							showsHorizontalScrollIndicator={false}
