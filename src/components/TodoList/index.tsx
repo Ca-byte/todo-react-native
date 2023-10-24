@@ -9,30 +9,48 @@ import { TodoItem } from "../TodoItem";
 
 export function TodoList() {
 	const [taskName, setTaskName] = useState('');
-	const [todos, setTodos] = useState<string[]>([]);
+	const [todos, setTodos] = useState<{ id: number; taskName: string; completed: boolean }[]>([]);
+	const [completedCount, setCompletedCount] = useState(0);
+
 	
 	function handleAddNewTask() {
-		if (todos.includes(taskName)){
-			return Alert.alert("Oops! It seems like you've already added this task to your list.")
-		}
-		setTodos(prevState => [...prevState, taskName])
-		setTaskName('')
+    if (todos.find(todo => todo.taskName === taskName)) {
+      return Alert.alert("Oops! It seems like you've already added this task to your list.")
+    }
+    const newTodo = { id: todos.length + 1, taskName, completed: false };
+    setTodos(prevState => [...prevState, newTodo]);
+    setTaskName('');
   }
 
-	function handleRemoveTodo(activity: string){
-	
+	function handleRemoveTodo(id: number){
+		Alert.alert('Delete', `Are you sure to delete this task?`, [
+      {
+        text: 'Yes',
+        onPress: () => {
+          setTodos(prevState => prevState.filter(todo => todo.id !== id));
+          updateCompletedCount();
+        }
+      },
+      {
+        text: 'No',
+        style: 'cancel'
+      }
+    ])
+  }
 
-		Alert.alert('Delete',`Are you sure to delete ${activity}?`, [
-			{
-				text: 'Yes',
-				onPress: () => setTodos(prevState => prevState.filter(todo => todo !== activity))
-			},
-			{
-				text: 'No',
-				style: 'cancel'
-			}
-		] )
+	function handleToggleComplete(id: number) {
+		setTodos(prevState =>
+			prevState.map(todo =>
+				todo.id === id ? { ...todo, completed: !todo.completed } : todo
+			)
+		);
+		updateCompletedCount();
 	}
+
+	function updateCompletedCount() {
+    const count = todos.filter(todo => todo.completed).length;
+    setCompletedCount(count);
+  }
 
 	return(
 		<>
@@ -59,7 +77,7 @@ export function TodoList() {
 					<View style={styles.wrapperCounters}>
 						<View style={styles.wrapperCounter}>
 							<Text style={styles.counterTextTodo}>
-								Created  
+								Created
 							</Text>
 							<View style={styles.counterBagde}>
 								<Text style={styles.counterNumber}>{todos.length}</Text>
@@ -70,23 +88,23 @@ export function TodoList() {
 								Completed  
 							</Text>
 							<View style={styles.counterBagde}>
-								<Text style={styles.counterNumber}>2</Text>
+								<Text style={styles.counterNumber}>{completedCount}</Text>
 							</View>
 						</View>
 					</View>
 					<FlatList
 						data={todos} 
-						keyExtractor={item => item}
-						renderItem={({item}) => (
+						keyExtractor={item => item.id.toString()}  
+						renderItem={({ item }) => (
 							<TodoItem 
-							key={item}
-							todo={item} 
-							onRemove={() =>handleRemoveTodo(item)}
-							onToggleComplete={}
-							isCompleted
+								key={item.id.toString()}  
+								todo={item.taskName} 
+								onRemove={() => handleRemoveTodo(item.id)}
+								onToggleComplete={() => handleToggleComplete(item.id)}
+								isCompleted={item.completed}  
 							/>
-							)}
-							showsHorizontalScrollIndicator={false}
+						)}
+						showsHorizontalScrollIndicator={false}
 							ListEmptyComponent={()=> (
 						<>
 							<View style={styles.divider}></View>

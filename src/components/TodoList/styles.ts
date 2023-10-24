@@ -18,7 +18,6 @@ export const styles = StyleSheet.create({
     borderRadius: 6,
     color: '#808080',
 		marginRight: 4
-
   },
 
 	addButton: {
@@ -65,15 +64,16 @@ export const styles = StyleSheet.create({
 
 	counterBagde: {
 		width: 25,
-		height: 19,
+		height: 20,
 		backgroundColor: '#262626',
-		borderRadius: 8,
+		borderRadius: 10,
 	},
 
 	counterNumber: {
 		color : '#F2F2F2',
 		fontSize: 12,
-		textAlign: 'center'
+		textAlign: 'center',
+		paddingTop: 2
 	},
 
   divider: {
@@ -98,14 +98,15 @@ export const styles = StyleSheet.create({
 	}, 
 	
 	taskName: {
-		color : '#F2F2F2'
+		color : '#F2F2F2',
 	},
+
 	EmptyListContent: {
 		alignSelf: 'center',
 		marginTop: 48,
 		marginBottom: 16
-		
 	},
+
 	listEmptyText: {
 		color:  '#F2F2F2',
 		fontSize: 14,

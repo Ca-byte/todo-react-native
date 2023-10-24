@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
 		marginBottom: 8,
 		paddingHorizontal: 24
 	},
-	
+
 	trashButton: {
 		marginLeft: 40
 	}, 
@@ -20,30 +20,32 @@ export const styles = StyleSheet.create({
 	taskName: {
 		color : '#F2F2F2'
 	},
+
   checkbox: {
-    width: 30,
-    height: 30,
+    width: 25,
+    height: 25,
     borderWidth: 2,
     borderColor: '#5E60CE',
-    borderRadius: 5,
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   checkmarkIcon: {
-    width: 20,
-    height: 20,
-  },
-  checkmarkEmpty: {
-    width: 20,
-    height: 20,
-    borderRadius: 5,
-    borderWidth: 2,
-    borderColor: '#5E60CE',
-  },
-  completedTaskName: {
-    textDecorationLine: 'line-through',
-    color: 'gray',
-   
+    width: 12,
+    height: 8,
   },
 
+  checkmarkEmpty: {
+    width: 16,
+    height: 16,
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: '#4EA8DE',
+  },
+
+  completedTaskName: {
+    color: 'gray',
+    textDecorationLine: 'line-through',
+  },
 })
