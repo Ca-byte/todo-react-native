@@ -40,17 +40,28 @@ export function TodoList() {
 
 	function handleToggleComplete(id: number) {
 		setTodos(prevState =>
-			prevState.map(todo =>
-				todo.id === id ? { ...todo, completed: !todo.completed } : todo
-			)
+			prevState.map(todo => {
+				if(todo.id === id){
+				if(!todo.completed){
+					// Transition from incomplete to complete
+					updateCompletedCount();
+					return {...todo, completed: true } 
+				} else {
+					  // Already completed, don't increment the count
+					return todo;
+				}
+			}
+			return todo;
+				
+			})
 		);
 		updateCompletedCount();
 	}
-
+			
 	function updateCompletedCount() {
-    const count = todos.filter(todo => todo.completed).length;
-    setCompletedCount(count);
-  }
+		const count = todos.filter(todo => todo.completed).length + 1;
+		setCompletedCount(count);
+	}
 
 	return(
 		<>
@@ -101,11 +112,11 @@ export function TodoList() {
 								todo={item.taskName} 
 								onRemove={() => handleRemoveTodo(item.id)}
 								onToggleComplete={() => handleToggleComplete(item.id)}
-								isCompleted={item.completed}  
-							/>
-						)}
-						showsHorizontalScrollIndicator={false}
-							ListEmptyComponent={()=> (
+								isCompleted={item.completed} 
+								/>
+								)}
+								showsHorizontalScrollIndicator={false}
+								ListEmptyComponent={()=> (
 						<>
 							<View style={styles.divider}></View>
 							<Image style={styles.EmptyListContent} source={clipboardIMG} />
